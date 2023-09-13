@@ -27,11 +27,6 @@ class TestPopularity():
         for row in table_data:
             if row.popularity < expected:
                 exceptions_list.append(self._build_exception_message(row, expected))
-            #try:
-            #    assert row.popularity >= expected, self._build_exception_message(row, expected)
-            #except AssertionError as exception:
-            #    exceptions_list.append(exception)
-        
         return exceptions_list
     
     def _build_exception_message(self, row: ProgrammingLanguages, expected) -> str:
