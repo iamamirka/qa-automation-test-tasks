@@ -21,14 +21,9 @@ class ProgrammingLanguagesTable(WebElement):
         data_from_row = self._get_data_from_row(row)
         if not data_from_row:
             return
-        return ProgrammingLanguages(website=data_from_row[0], 
-                                    popularity=data_from_row[1], 
-                                    frontend=data_from_row[2],
-                                    backend=data_from_row[3],
-                                    database=data_from_row[4],
-                                    notes=data_from_row[5])
+        return ProgrammingLanguages.map(data_from_row)
     
-    def _get_data_from_row(self, row: WebElement):
+    def _get_data_from_row(self, row: WebElement) -> [str]:
         cells = row.find_elements(By.TAG_NAME, 'td')
         row_data = [cell.text for cell in cells]
         return row_data
