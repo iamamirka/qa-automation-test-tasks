@@ -1,6 +1,6 @@
 import pytest
 from selenium import webdriver
-from programming_languages import ProgrammingLanguages
+from data.programming_languages import ProgrammingLanguages
 from navigation.wiki_navigation import WikiNavigation
 
 class TestPopularity():

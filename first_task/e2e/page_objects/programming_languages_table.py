@@ -1,6 +1,6 @@
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
-from programming_languages import ProgrammingLanguages
+from data.programming_languages import ProgrammingLanguages
 
 class ProgrammingLanguagesTable(WebElement):
     

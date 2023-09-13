@@ -1,7 +1,7 @@
 import requests
 import pytest
 from bs4 import BeautifulSoup
-from programming_languages import ProgrammingLanguages
+from data.programming_languages import ProgrammingLanguages
 
 class TestPopularity():
 
