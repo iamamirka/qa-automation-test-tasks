@@ -1,10 +1,9 @@
 import pytest
 from color import Color
 from point import Point
-from engine_2d import Engine2D
 from geometrical_figures import Circle, Triangle, Rectangle
 
-class TestGeometricalFigures():
+class TestGeometricalFigures:
 
     def test_create_circle(self):
        circle = Circle(Point(0,5), 5)

@@ -1,7 +1,7 @@
 from color import Color
 from point import Point
 
-class Circle():
+class Circle:
 
     def __init__(self, center: Point, radius: int) -> None:
         self.center = center
@@ -10,7 +10,7 @@ class Circle():
     def draw(self, color: Color):
         print(f"Drawing Circle: {self.center.x, self.center.y} with radius: {self.radius} in {color} color")
 
-class Triangle():
+class Triangle:
 
     def __init__(self, points: [Point]) -> None:
         self.points = points
@@ -18,7 +18,7 @@ class Triangle():
     def draw(self, color: Color):
         print(f"Drawing Triangle: with points: {self.points[0]},{self.points[1]},{self.points[2]} in {color} color")
 
-class Rectangle():
+class Rectangle:
 
     def __init__(self, upper_left_point: Point, width: int, height: int) -> None:
         self.upper_left_point = upper_left_point

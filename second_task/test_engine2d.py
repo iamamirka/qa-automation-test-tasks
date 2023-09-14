@@ -4,7 +4,7 @@ from point import Point
 from engine_2d import Engine2D
 from geometrical_figures import Circle, Triangle, Rectangle
 
-class TestEngine2D():
+class TestEngine2D:
 
     def test_add_figure_to_canvas_adds_figure_to_canvas(self):
         sut = Engine2D()
