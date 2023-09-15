@@ -12,6 +12,8 @@ class Circle(Figure):
         self.radius = radius
 
     def draw(self, color: Color):
+        if not isinstance(color, Color):
+            raise TypeError(f"Inappropriate argument type passed to method {self.draw.__name__}")
         print(MessageBuilder.build_message(self, color))
 
 class Triangle(Figure):
@@ -20,6 +22,8 @@ class Triangle(Figure):
         self.points = points
 
     def draw(self, color: Color):
+        if not isinstance(color, Color):
+            raise TypeError(f"Inappropriate argument type passed to method {self.draw.__name__}")
         print(MessageBuilder.build_message(self, color))
 
 class Rectangle(Figure):
@@ -30,6 +34,8 @@ class Rectangle(Figure):
         self.height = height
 
     def draw(self, color: Color):
+        if not isinstance(color, Color):
+            raise TypeError(f"Inappropriate argument type passed to method {self.draw.__name__}")
         print(MessageBuilder.build_message(self, color))
 
 class MessageBuilder:
