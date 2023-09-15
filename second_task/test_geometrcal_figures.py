@@ -24,19 +24,19 @@ class TestGeometricalFigures:
         circle = Circle(Point(0,0), 0)
         circle.draw(Color.AQUA)
         drawn_figure = capfd.readouterr()[0].strip()
-        assert drawn_figure == 'Drawing Circle: (0, 0) with radius: 0 in Color.AQUA color'
+        assert drawn_figure == 'Drawing aqua Circle with parameters: center:(0,0) radius:0'
 
     def test_draw_triangle(self, capfd):
         triangle = Triangle([Point(0,1), Point(0,5), Point(5,5)])
         triangle.draw(Color.GREEN)
         drawn_figure = capfd.readouterr()[0].strip()
-        assert drawn_figure == 'Drawing Triangle: with points: (0,1),(0,5),(5,5) in Color.GREEN color'
+        assert drawn_figure == 'Drawing green Triangle with parameters: points (0,1), (0,5), (5,5)'
 
     def test_draw_rectangle(self, capfd):
         rectangle = Rectangle(Point(0,0), 5, 5)
         rectangle.draw(Color.ORANGE)
         drawn_figure = capfd.readouterr()[0].strip()
-        assert drawn_figure == 'Drawing Rectangle: (0,0) with width: 5 and height: 5 in Color.ORANGE color'
+        assert drawn_figure == 'Drawing orange Rectangle with parameters: upper_left_point:(0,0) width:5 height:5'
 
 if __name__ == "__main__":
     pytest.main([__file__])

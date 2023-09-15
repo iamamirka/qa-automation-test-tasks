@@ -43,7 +43,7 @@ class TestEngine2D:
         sut.canvas = [circle]
         sut.draw()
         drawn_figures = capfd.readouterr()[0].strip()
-        assert drawn_figures == 'Drawing Circle: (0, 1) with radius: 5 in Color.BLACK color'
+        assert drawn_figures == 'Drawing black Circle with parameters: center:(0,1) radius:5'
 
     def test_draw_draws_multiple_figures_on_canvas(self, capfd):
         sut = Engine2D()
@@ -52,8 +52,8 @@ class TestEngine2D:
         sut.canvas = [triangle, rectangle]
         sut.draw()
         drawn_figures = capfd.readouterr()[0].strip().split('\n')
-        assert drawn_figures == ['Drawing Triangle: (0,1) with points: (0,0)(0,5)(5,5) in Color.BLACK color',
-                                 'Drawing Rectangle: (0,0) with width: 5 and height: 5 in Color.BLACK color']
+        assert drawn_figures == ['Drawing black Triangle with parameters: points (0,1), (0,5), (5,5)',
+                                 'Drawing black Rectangle with parameters: upper_left_point:(0,0) width:5 height:5']
 
     #rewrite after exception added
     def test_draw_raises_on_empty_canvas(self):
