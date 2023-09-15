@@ -9,7 +9,7 @@ class Engine2D:
 
     def add_figure_to_canvas(self, figure: Figure):
         if not isinstance(figure, Figure):
-            raise TypeError("Inappropriate argument type passed to method add_figure_to_canvas as figure")
+            raise TypeError("Inappropriate argument type passed to method as figure")
         self.canvas.append(figure)
 
     def draw(self):
