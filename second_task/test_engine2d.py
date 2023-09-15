@@ -20,6 +20,11 @@ class TestEngine2D:
         sut.add_figure_to_canvas(circle)
         assert sut.canvas == [circle, circle]
 
+    def test_add_figure_to_canvas_raises_on_wrong_argument_type_passed(self):
+        sut = Engine2D()
+        with pytest.raises(TypeError):
+            sut.add_figure_to_canvas("circle")
+
     def test_set_color_sets_color(self):
         sut = Engine2D()
         color_before = sut.current_color
@@ -28,14 +33,17 @@ class TestEngine2D:
         assert color_before != color_after
         assert color_after == Color.RED
 
-    #rewrite after logic added
+    def test_set_color_raises_on_wrong_argument_type_passed(self):
+        sut = Engine2D()
+        sut.current_color = Color.BLACK
+        with pytest.raises(TypeError):
+            sut.set_color("violet")
+
     def test_set_color_raises_on_same_color_passed(self):
         sut = Engine2D()
-        color_before = sut.current_color
-        sut.set_color(sut.current_color)
-        color_after = sut.current_color
-        #assert color_before != color_after
-        #assert color_after == Color.RED
+        sut.current_color = Color.BLACK
+        with pytest.raises(ValueError):
+            sut.set_color(sut.current_color)
 
     def test_draw_draws_figure_on_canvas(self, capfd):
         sut = Engine2D()
@@ -55,19 +63,18 @@ class TestEngine2D:
         assert drawn_figures == ['Drawing black Triangle with parameters: points (0,1), (0,5), (5,5)',
                                  'Drawing black Rectangle with parameters: upper_left_point:(0,0) width:5 height:5']
 
-    #rewrite after exception added
     def test_draw_raises_on_empty_canvas(self):
         sut = Engine2D()
-        sut.draw()
+        with pytest.raises(ValueError):
+            sut.draw()
 
     def test_draw_clears_canvas_after_all_figures_drawn(self):
         sut = Engine2D()
-        sut.draw()
         circle = Circle(Point(0, 1), 5)
         rectangle = Rectangle(Point(0,0), 5, 5)
         sut.canvas = [circle, rectangle]
         sut.draw()
-        assert not sut.canvas, "Canvas was not empty"
+        assert not sut.canvas, "Canvas was not empty after method execution"
 
 if __name__ == "__main__":
     pytest.main([__file__])

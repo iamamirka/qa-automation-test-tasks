@@ -1,7 +1,7 @@
 import pytest
 from color import Color
 from point import Point
-from geometrical_figures import Circle, Triangle, Rectangle
+from geometrical_figures import Circle, Triangle, Rectangle, Figure
 
 class TestGeometricalFigures:
 
@@ -25,6 +25,14 @@ class TestGeometricalFigures:
         circle.draw(Color.AQUA)
         drawn_figure = capfd.readouterr()[0].strip()
         assert drawn_figure == 'Drawing aqua Circle with parameters: center:(0,0) radius:0'
+
+    @pytest.mark.parametrize("figure", [
+        Circle(Point(0,0), 0),
+        Triangle([Point(0,1), Point(0,5), Point(5,5)]),
+        Rectangle(Point(0,0), 5, 5)])
+    def test_draw_raises_on_wrong_value_passed(self, figure: Figure):
+        with pytest.raises(TypeError):
+            figure.draw("AQUA")
 
     def test_draw_triangle(self, capfd):
         triangle = Triangle([Point(0,1), Point(0,5), Point(5,5)])
