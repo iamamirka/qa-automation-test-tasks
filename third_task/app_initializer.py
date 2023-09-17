@@ -11,6 +11,28 @@ class AppInitializer:
 
     def _initialize_map(self):
         map_generator = MapGenerator()
+        map_params = self._process_inserted_map_values()
+        generated_matrix = map_generator.generate_map(map_params[0], map_params[1])
+        print("Matrix initialized successfully!")
+        self._print_matrix(generated_matrix)
+        
+        return generated_matrix
+    
+    def _initialize_raft(self, matrix):
+        raft_params = self._process_inserted_raft_values(matrix)
+        matrix[raft_params[0]][raft_params[1]] = 2
+        print("Raft initialized successfully!")
+        self._print_matrix(matrix)
+        return (raft_params[0], raft_params[1])
+    
+    def _initialize_destination(self, matrix, raft_coordinates: (int, int)):
+        destination_params = self._process_inserted_destination_values(matrix, raft_coordinates)
+        matrix[destination_params[0]][destination_params[1]] = 3
+        print("Destination initialized successfully!")
+        self._print_matrix(matrix)
+        return (destination_params[0], destination_params[1])
+    
+    def _process_inserted_map_values(self):
         map_width = 0
         map_height = 0
         while map_width < 2 or map_height < 2:
@@ -26,13 +48,9 @@ class AppInitializer:
                 continue
             if map_width < 2 or map_height < 2:
                 print("Matrix can't be smaller than 2x2, insert another values")
-        generated_matrix = map_generator.generate_map(map_width, map_height)
-        print("Matrix initialized successfully!")
-        self._print_matrix(generated_matrix)
-        
-        return generated_matrix
+        return (map_width, map_height)
     
-    def _initialize_raft(self, matrix):
+    def _process_inserted_raft_values(self, matrix):
         spawn_x = None
         spawn_y = None
         while True:
@@ -55,12 +73,9 @@ class AppInitializer:
                 print("Raft can't be spawned on earth, insert another coordinates")
             else:
                 break
-        matrix[spawn_x][spawn_y] = 2
-        print("Raft initialized successfully!")
-        self._print_matrix(matrix)
         return (spawn_x, spawn_y)
     
-    def _initialize_destination(self, matrix, raft_coordinates: (int, int)):
+    def _process_inserted_destination_values(self, matrix, raft_coordinates):
         destination_x = None
         destination_y = None
         while True:
@@ -85,9 +100,6 @@ class AppInitializer:
                 print("Destination equals raft coordinates, insert another coordinates")
             else:
                 break
-        matrix[destination_x][destination_y] = 3
-        print("Destination initialized successfully!")
-        self._print_matrix(matrix)
         return (destination_x, destination_y)
     
     def _print_matrix(self, matrix):
