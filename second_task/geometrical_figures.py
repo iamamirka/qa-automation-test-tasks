@@ -1,7 +1,9 @@
 from color import Color
 from point import Point
+from abc import ABC, abstractmethod
 
-class Figure:
+class Figure(ABC):
+    @abstractmethod
     def draw():
         pass
 
