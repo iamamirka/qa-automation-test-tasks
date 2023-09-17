@@ -6,6 +6,13 @@ class AppInitializer:
         matrix = self._initialize_map()
         raft_coordinates = self._initialize_raft(matrix)
         destination = self._initialize_destination(matrix, raft_coordinates)
+        print("""Application initialization was successfull!
+            Map legend:
+              0 - water
+              1 - land
+              2 - raft
+              3 - place of destination
+              """)
 
         return (matrix, raft_coordinates, destination)
 
