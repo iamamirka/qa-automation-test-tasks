@@ -26,7 +26,7 @@
 ### Запуск тестов
 Из директории second_task выполнить команды
   * ```pytest test_engine2d.py```
-  * ```pytest test_geometrcal_figures.py```
+  * ```pytest test_geometrical_figures.py```
 
 ## Third task. Algorithms
 Решение лежит в директории third_task.
