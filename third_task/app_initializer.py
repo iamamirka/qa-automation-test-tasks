@@ -14,8 +14,16 @@ class AppInitializer:
         map_width = 0
         map_height = 0
         while map_width < 2 or map_height < 2:
-            map_width = int(input("Insert map width:"))
-            map_height = int(input("Insert map height:"))
+            try:
+                map_width = int(input("Insert map width:"))
+            except ValueError as error:
+                print("Inserted value is not a number, insert another value")
+                continue
+            try:
+                map_height = int(input("Insert map height:"))
+            except ValueError as error:
+                print("Inserted value is not a number, insert another value")
+                continue
             if map_width < 2 or map_height < 2:
                 print("Matrix can't be smaller than 2x2, insert another values")
         generated_matrix = map_generator.generate_map(map_width, map_height)
@@ -25,9 +33,19 @@ class AppInitializer:
         return generated_matrix
     
     def _initialize_raft(self, matrix):
+        spawn_x = None
+        spawn_y = None
         while True:
-            spawn_x = int(input("Insert raft spawn point X coordinate:")) - 1
-            spawn_y = int(input("Insert raft spawn point Y coordinate:")) - 1
+            try:
+                spawn_x = int(input("Insert raft spawn point X coordinate:")) - 1
+            except ValueError as error:
+                print("Inserted value is not a number, insert another value")
+                continue
+            try:
+                spawn_y = int(input("Insert raft spawn point Y coordinate:")) - 1
+            except ValueError as error:
+                print("Inserted value is not a number, insert another value")
+                continue
             if (spawn_y + 1 > len(matrix[0]) 
                 or spawn_x + 1 > len(matrix)
                 or spawn_y + 1 <= 0 
@@ -43,9 +61,19 @@ class AppInitializer:
         return (spawn_x, spawn_y)
     
     def _initialize_destination(self, matrix, raft_coordinates: (int, int)):
+        destination_x = None
+        destination_y = None
         while True:
-            destination_x = int(input("Insert destination point X coordinate:")) - 1
-            destination_y = int(input("Insert destination point Y coordinate:")) - 1
+            try:
+                destination_x = int(input("Insert destination point X coordinate:")) - 1
+            except ValueError as error:
+                print("Inserted value is not a number, insert another value")
+                continue
+            try:
+                destination_y = int(input("Insert destination point Y coordinate:")) - 1
+            except ValueError as error:
+                print("Inserted value is not a number, insert another value")
+                continue
             if (destination_y + 1 > len(matrix[0])
                 or destination_x + 1 > len(matrix) 
                 or destination_y + 1 <= 0
