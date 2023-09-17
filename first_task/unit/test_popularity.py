@@ -7,14 +7,14 @@ class TestPopularity():
 
     url = "https://en.wikipedia.org/wiki/Programming_languages_used_in_most_popular_websites"
 
-    expected_cases = [10**7, 1.5 * 10**7, 5 * 10**7, 10**8, 5 * 10**8, 10**9, 1.5 * 10**9]
+    threshold_cases = [10**7, 1.5 * 10**7, 5 * 10**7, 10**8, 5 * 10**8, 10**9, 1.5 * 10**9]
 
-    @pytest.mark.parametrize("expected", expected_cases)
-    def test_website_popularity_should_be_greater_than_expected(self, expected):
+    @pytest.mark.parametrize("threshold", threshold_cases)
+    def test_website_popularity_should_be_greater_than_expected(self, threshold):
         
         table_data = self._fetch_and_parse_data_from(self.url)
 
-        exceptions = self._assert_popularity(table_data, expected)
+        exceptions = self._assert_popularity(table_data, threshold)
         if exceptions:
             for exception in exceptions:
                 print(exception)

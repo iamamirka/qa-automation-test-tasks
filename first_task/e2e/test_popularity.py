@@ -5,16 +5,16 @@ from navigation.wiki_navigation import WikiNavigation
 
 class TestPopularity():
     
-    expected_cases = [10**7, 1.5 * 10**7, 5 * 10**7, 10**8, 5 * 10**8, 10**9, 1.5 * 10**9]
+    threshold_cases = [10**7, 1.5 * 10**7, 5 * 10**7, 10**8, 5 * 10**8, 10**9, 1.5 * 10**9]
 
-    @pytest.mark.parametrize("expected", expected_cases)
-    def test_website_popularity_less_than_expected(self, expected):
+    @pytest.mark.parametrize("threshold", threshold_cases)
+    def test_website_popularity_less_than_expected(self, threshold):
         driver = webdriver.Chrome()
         programming_languages_page = WikiNavigation(driver).go_to_programming_languages_page()
 
         table_data = programming_languages_page.get_table_data()
 
-        exceptions = self._assert_popularity(table_data, expected)
+        exceptions = self._assert_popularity(table_data, threshold)
         if exceptions:
             for exception in exceptions:
                 print(exception)
